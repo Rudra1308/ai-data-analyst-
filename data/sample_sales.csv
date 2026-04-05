@@ -1,0 +1,79 @@
+Date,Product,Category,Revenue,Quantity,Region,Rating
+2024-01-05,Laptop Pro 15,Electronics,1299.99,15,North America,4.5
+2024-01-05,Wireless Mouse,Accessories,29.99,120,Europe,4.2
+2024-01-05,USB-C Hub,Accessories,49.99,85,Asia,4.0
+2024-01-08,Laptop Pro 15,Electronics,1299.99,22,Europe,4.6
+2024-01-08,Mechanical Keyboard,Accessories,89.99,60,North America,4.7
+2024-01-10,4K Monitor,Electronics,499.99,30,Asia,4.3
+2024-01-10,Webcam HD,Accessories,59.99,95,North America,3.9
+2024-01-12,Laptop Pro 15,Electronics,1299.99,18,Asia,4.4
+2024-01-12,Wireless Mouse,Accessories,29.99,150,North America,4.1
+2024-01-15,Standing Desk,Furniture,599.99,12,Europe,4.8
+2024-01-15,Desk Lamp LED,Furniture,39.99,200,North America,4.0
+2024-01-18,4K Monitor,Electronics,499.99,25,North America,4.5
+2024-01-18,Noise Cancelling Headphones,Electronics,349.99,40,Europe,4.9
+2024-01-20,Laptop Pro 15,Electronics,1299.99,10,Europe,4.3
+2024-01-20,Ergonomic Chair,Furniture,799.99,8,North America,4.6
+2024-01-22,Wireless Mouse,Accessories,29.99,180,Asia,4.0
+2024-01-22,USB-C Hub,Accessories,49.99,70,North America,4.2
+2024-01-25,Mechanical Keyboard,Accessories,89.99,55,Europe,4.5
+2024-01-25,Webcam HD,Accessories,59.99,80,Asia,3.8
+2024-01-28,Standing Desk,Furniture,599.99,15,North America,4.7
+2024-01-28,Desk Lamp LED,Furniture,39.99,160,Europe,4.1
+2024-02-01,Laptop Pro 15,Electronics,1299.99,20,North America,4.5
+2024-02-01,4K Monitor,Electronics,499.99,35,Asia,4.4
+2024-02-03,Noise Cancelling Headphones,Electronics,349.99,50,North America,4.8
+2024-02-03,Wireless Mouse,Accessories,29.99,200,Europe,4.3
+2024-02-05,Ergonomic Chair,Furniture,799.99,10,Europe,4.7
+2024-02-05,USB-C Hub,Accessories,49.99,90,North America,4.1
+2024-02-08,Mechanical Keyboard,Accessories,89.99,65,Asia,4.6
+2024-02-08,Webcam HD,Accessories,59.99,110,North America,4.0
+2024-02-10,4K Monitor,Electronics,499.99,28,Europe,4.2
+2024-02-10,Laptop Pro 15,Electronics,1299.99,25,Asia,4.4
+2024-02-12,Standing Desk,Furniture,599.99,18,North America,4.9
+2024-02-12,Desk Lamp LED,Furniture,39.99,175,Asia,3.9
+2024-02-15,Noise Cancelling Headphones,Electronics,349.99,45,Europe,4.7
+2024-02-15,Wireless Mouse,Accessories,29.99,220,North America,4.2
+2024-02-18,Ergonomic Chair,Furniture,799.99,12,Asia,4.5
+2024-02-18,USB-C Hub,Accessories,49.99,100,Europe,4.3
+2024-02-20,Laptop Pro 15,Electronics,1299.99,30,North America,4.6
+2024-02-20,Mechanical Keyboard,Accessories,89.99,70,Europe,4.4
+2024-02-22,4K Monitor,Electronics,499.99,32,North America,4.5
+2024-02-22,Webcam HD,Accessories,59.99,85,Asia,4.1
+2024-02-25,Standing Desk,Furniture,599.99,20,Europe,4.8
+2024-02-25,Desk Lamp LED,Furniture,39.99,190,North America,4.0
+2024-02-28,Noise Cancelling Headphones,Electronics,349.99,55,Asia,4.6
+2024-02-28,Wireless Mouse,Accessories,29.99,250,Europe,4.4
+2024-03-01,Laptop Pro 15,Electronics,1299.99,28,Europe,4.5
+2024-03-01,Ergonomic Chair,Furniture,799.99,14,North America,4.8
+2024-03-03,USB-C Hub,Accessories,49.99,110,Asia,4.2
+2024-03-03,Mechanical Keyboard,Accessories,89.99,75,North America,4.7
+2024-03-05,4K Monitor,Electronics,499.99,38,Europe,4.3
+2024-03-05,Webcam HD,Accessories,59.99,100,North America,3.9
+2024-03-08,Standing Desk,Furniture,599.99,22,Asia,4.7
+2024-03-08,Desk Lamp LED,Furniture,39.99,210,Europe,4.1
+2024-03-10,Laptop Pro 15,Electronics,1299.99,35,North America,4.7
+2024-03-10,Noise Cancelling Headphones,Electronics,349.99,60,Europe,4.9
+2024-03-12,Wireless Mouse,Accessories,29.99,270,Asia,4.3
+2024-03-12,Ergonomic Chair,Furniture,799.99,16,Europe,4.6
+2024-03-15,USB-C Hub,Accessories,49.99,120,North America,4.4
+2024-03-15,Mechanical Keyboard,Accessories,89.99,80,Asia,4.5
+2024-03-18,4K Monitor,Electronics,499.99,40,North America,4.6
+2024-03-18,Webcam HD,Accessories,59.99,115,Europe,4.2
+2024-03-20,Standing Desk,Furniture,599.99,25,North America,4.9
+2024-03-20,Laptop Pro 15,Electronics,1299.99,32,Asia,4.4
+2024-03-22,Desk Lamp LED,Furniture,39.99,230,North America,4.2
+2024-03-22,Noise Cancelling Headphones,Electronics,349.99,65,Asia,4.8
+2024-03-25,Wireless Mouse,Accessories,29.99,290,North America,4.5
+2024-03-25,Ergonomic Chair,Furniture,799.99,18,Europe,4.7
+2024-03-28,USB-C Hub,Accessories,49.99,130,Europe,4.3
+2024-03-28,Mechanical Keyboard,Accessories,89.99,85,North America,4.8
+2024-03-30,4K Monitor,Electronics,499.99,42,Asia,4.4
+2024-03-30,Webcam HD,Accessories,59.99,125,North America,4.3
+2024-03-30,Standing Desk,Furniture,599.99,28,Europe,4.8
+2024-03-30,Desk Lamp LED,Furniture,39.99,250,Asia,4.0
+2024-03-30,Laptop Pro 15,Electronics,1299.99,38,North America,4.8
+2024-03-30,Noise Cancelling Headphones,Electronics,349.99,70,Europe,4.9
+2024-03-30,Wireless Mouse,Accessories,29.99,300,Asia,4.6
+2024-03-30,Ergonomic Chair,Furniture,799.99,20,North America,4.9
+2024-03-30,Mechanical Keyboard,Accessories,89.99,90,Europe,4.7

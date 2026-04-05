@@ -1,0 +1,219 @@
+/* ========================================
+   AI Data Analyst — Premium Dark Theme
+   ======================================== */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ---- Global ---- */
+.stApp {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #0a0a1a 0%, #0d1117 50%, #0a0a1a 100%);
+    color: #e0e0e0;
+}
+
+/* Hide default Streamlit header/footer */
+#MainMenu {visibility: hidden;}
+header {visibility: hidden;}
+footer {visibility: hidden;}
+
+/* ---- Sidebar ---- */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #0d1117 0%, #161b22 100%);
+    border-right: 1px solid rgba(108, 99, 255, 0.15);
+}
+
+[data-testid="stSidebar"] .stMarkdown h1,
+[data-testid="stSidebar"] .stMarkdown h2,
+[data-testid="stSidebar"] .stMarkdown h3 {
+    color: #c9d1d9;
+    font-weight: 600;
+}
+
+/* ---- Chat Messages ---- */
+[data-testid="stChatMessage"] {
+    background: rgba(22, 27, 34, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(108, 99, 255, 0.1);
+    border-radius: 16px;
+    padding: 16px;
+    margin-bottom: 12px;
+    animation: fadeInUp 0.3s ease-out;
+}
+
+[data-testid="stChatMessage"][data-testid*="user"] {
+    background: rgba(108, 99, 255, 0.08);
+    border-color: rgba(108, 99, 255, 0.2);
+}
+
+/* ---- Buttons ---- */
+.stButton > button {
+    background: linear-gradient(135deg, #6C63FF 0%, #5A54D4 100%);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    padding: 10px 24px;
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(108, 99, 255, 0.25);
+}
+
+.stButton > button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(108, 99, 255, 0.4);
+    background: linear-gradient(135deg, #7B73FF 0%, #6C63FF 100%);
+}
+
+/* ---- File Uploader ---- */
+[data-testid="stFileUploader"] {
+    border: 2px dashed rgba(108, 99, 255, 0.3);
+    border-radius: 16px;
+    padding: 20px;
+    background: rgba(108, 99, 255, 0.03);
+    transition: all 0.3s ease;
+}
+
+[data-testid="stFileUploader"]:hover {
+    border-color: rgba(108, 99, 255, 0.6);
+    background: rgba(108, 99, 255, 0.06);
+}
+
+/* ---- Tabs ---- */
+.stTabs [data-baseweb="tab-list"] {
+    gap: 4px;
+    background: rgba(22, 27, 34, 0.5);
+    border-radius: 12px;
+    padding: 4px;
+}
+
+.stTabs [data-baseweb="tab"] {
+    border-radius: 10px;
+    padding: 10px 20px;
+    font-weight: 500;
+    color: #8b949e;
+    transition: all 0.25s ease;
+}
+
+.stTabs [data-baseweb="tab"]:hover {
+    color: #c9d1d9;
+    background: rgba(108, 99, 255, 0.1);
+}
+
+.stTabs [aria-selected="true"] {
+    background: rgba(108, 99, 255, 0.15) !important;
+    color: #6C63FF !important;
+    font-weight: 600;
+}
+
+/* ---- Metric Cards ---- */
+[data-testid="stMetric"] {
+    background: rgba(22, 27, 34, 0.6);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(108, 99, 255, 0.1);
+    border-radius: 16px;
+    padding: 20px;
+    transition: transform 0.2s ease;
+}
+
+[data-testid="stMetric"]:hover {
+    transform: translateY(-3px);
+}
+
+[data-testid="stMetricLabel"] {
+    color: #8b949e;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+[data-testid="stMetricValue"] {
+    color: #6C63FF;
+    font-weight: 700;
+    font-size: 1.8rem;
+}
+
+/* ---- DataFrames / Tables ---- */
+[data-testid="stDataFrame"] {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(108, 99, 255, 0.1);
+}
+
+/* ---- Expander ---- */
+.streamlit-expanderHeader {
+    background: rgba(22, 27, 34, 0.5);
+    border-radius: 12px;
+    font-weight: 500;
+    color: #c9d1d9;
+}
+
+/* ---- Select boxes ---- */
+[data-testid="stSelectbox"] > div > div {
+    background: rgba(22, 27, 34, 0.8);
+    border-color: rgba(108, 99, 255, 0.2);
+    border-radius: 10px;
+}
+
+/* ---- Chat Input ---- */
+[data-testid="stChatInput"] textarea {
+    background: rgba(22, 27, 34, 0.8);
+    border: 1px solid rgba(108, 99, 255, 0.2);
+    border-radius: 14px;
+    color: #e0e0e0;
+    font-family: 'Inter', sans-serif;
+}
+
+[data-testid="stChatInput"] textarea:focus {
+    border-color: #6C63FF;
+    box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.15);
+}
+
+/* ---- Animations ---- */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.processing-indicator {
+    animation: pulse 1.5s infinite;
+    color: #6C63FF;
+    font-weight: 500;
+}
+
+/* ---- Scrollbar ---- */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #0d1117;
+}
+::-webkit-scrollbar-thumb {
+    background: rgba(108, 99, 255, 0.3);
+    border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(108, 99, 255, 0.5);
+}
+
+/* ---- Success/Error/Info alerts ---- */
+.stAlert {
+    border-radius: 12px;
+}
+
+/* ---- Divider ---- */
+hr {
+    border-color: rgba(108, 99, 255, 0.1);
+}
