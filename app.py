@@ -68,6 +68,7 @@ with st.sidebar:
         "AI Model",
         options=list(OPENROUTER_MODELS.keys()),
         index=0,
+        key="model_select",
         help="Choose which LLM to use for analysis",
     )
     selected_model = OPENROUTER_MODELS[selected_model_name]
