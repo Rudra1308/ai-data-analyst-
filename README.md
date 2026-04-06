@@ -26,7 +26,6 @@ AI Data Analyst is a web-based application that allows users to upload structure
 | 💬 **Natural Language Chat** | Ask questions about your data in plain English |
 | 📊 **Auto Visualizations** | Interactive Plotly charts generated from queries |
 | 🧠 **AI Insights** | Powered by any LLM via OpenRouter |
-| 🤖 **ML Predictions** | Train models and evaluate performance with Scikit-learn |
 | 🔄 **Context Awareness** | Follow-up questions remember prior conversation |
 | 📊 **Auto EDA** | Automatic exploratory data analysis charts |
 | 🎨 **Premium Dark UI** | Glassmorphism design with smooth animations |
@@ -44,9 +43,9 @@ User → Streamlit UI → Backend API
                   ↓
             Generated Code → Execution Engine
                   ↓
-         Results → Visualization (Plotly) / ML Model (Scikit-learn)
+         Results → Visualization (Plotly)
                   ↓
-            Charts / Predictions → Streamlit UI
+            Charts → Streamlit UI
 ```
 
 ---
@@ -55,7 +54,7 @@ User → Streamlit UI → Backend API
 
 - **Frontend:** Streamlit
 - **Backend:** Python, Pandas, NumPy
-- **AI/ML:** OpenRouter (any LLM), Scikit-learn
+- **AI:** OpenRouter (any LLM)
 - **Visualization:** Plotly
 - **Styling:** Custom CSS with glassmorphism
 
@@ -99,9 +98,7 @@ streamlit run app.py
    - "Show me a summary of the data"
    - "Create a bar chart of revenue by product"
    - "What's the correlation between price and rating?"
-   - "Predict the category based on other features"
 4. **Explore** — browse auto-generated EDA charts
-5. **Predict** — train ML models and evaluate performance
 
 ---
 
@@ -121,7 +118,6 @@ ai-data-analyst/
 │   ├── llm_engine.py       # OpenRouter LLM integration
 │   ├── execution_engine.py # Safe code execution sandbox
 │   ├── visualization.py    # Plotly chart generation
-│   ├── ml_engine.py        # Scikit-learn ML module
 │   └── utils.py            # Shared utilities
 └── assets/
     └── style.css           # Custom dark theme CSS

@@ -11,7 +11,6 @@ from src.data_loader import load_csv, get_data_summary, get_sample_rows
 from src.llm_engine import LLMEngine
 from src.execution_engine import execute_code
 from src.visualization import quick_eda
-from src.ml_engine import detect_task_type, prepare_data, train_model
 from src.utils import format_dataframe_info, OPENROUTER_MODELS
 
 # ── Load environment variables ──────────────────────────────────────────
@@ -41,8 +40,6 @@ if "llm" not in st.session_state:
     st.session_state.llm = None
 if "data_summary" not in st.session_state:
     st.session_state.data_summary = None
-if "ml_results" not in st.session_state:
-    st.session_state.ml_results = None
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
@@ -102,7 +99,6 @@ with st.sidebar:
                     st.session_state.uploaded_filename = uploaded_file.name
                     st.session_state.data_summary = get_data_summary(df)
                     st.session_state.messages = []  # Clear chat on new upload
-                    st.session_state.ml_results = None
                     if st.session_state.llm:
                         st.session_state.llm.clear_history()
                     st.success(f"✅ Loaded **{uploaded_file.name}** — {df.shape[0]} rows × {df.shape[1]} columns")
@@ -175,7 +171,7 @@ if st.session_state.df is None:
                         border-radius: 20px; padding: 30px; width: 220px; text-align: center;">
                 <div style="font-size: 2.5rem; margin-bottom: 10px;">📊</div>
                 <h3 style="color: #c9d1d9; margin-bottom: 8px;">Discover</h3>
-                <p style="color: #8b949e; font-size: 0.9rem;">Get charts, insights & predictions</p>
+                <p style="color: #8b949e; font-size: 0.9rem;">Get charts & insights</p>
             </div>
         </div>
     </div>
@@ -184,7 +180,7 @@ if st.session_state.df is None:
 
 
 # ── Data is loaded — show main interface ────────────────────────────────
-tab_chat, tab_explore, tab_ml = st.tabs(["💬 Chat with Data", "📊 Data Explorer", "🤖 ML Predictions"])
+tab_chat, tab_explore = st.tabs(["💬 Chat with Data", "📊 Data Explorer"])
 
 
 # ─────────────────────────────────────────────────────────────────────────
@@ -330,71 +326,3 @@ with tab_explore:
     )
 
 
-# ─────────────────────────────────────────────────────────────────────────
-#  TAB 3: ML PREDICTIONS
-# ─────────────────────────────────────────────────────────────────────────
-with tab_ml:
-    st.markdown("### 🤖 Machine Learning Predictions")
-    st.markdown("Train a model on your data and evaluate its performance.")
-    st.divider()
-
-    df = st.session_state.df
-    all_cols = df.columns.tolist()
-
-    col_left, col_right = st.columns([1, 1])
-
-    with col_left:
-        target_col = st.selectbox(
-            "🎯 Target Column (what to predict)",
-            options=all_cols,
-            help="Select the column you want to predict",
-        )
-
-    with col_right:
-        available_features = [c for c in all_cols if c != target_col]
-        feature_cols = st.multiselect(
-            "📐 Feature Columns (inputs)",
-            options=available_features,
-            default=available_features,
-            help="Select columns to use as inputs for prediction",
-        )
-
-    if target_col and feature_cols:
-        task_type = detect_task_type(df, target_col)
-        st.info(f"🔍 Detected task: **{task_type.capitalize()}** (based on target column characteristics)")
-
-        if st.button("🚀 Train Model", use_container_width=True):
-            with st.spinner("🧠 Training model... This may take a moment."):
-                try:
-                    data = prepare_data(df, target_col, feature_cols)
-                    results = train_model(data, task_type)
-                    st.session_state.ml_results = results
-                    st.success("✅ Model trained successfully!")
-                except Exception as e:
-                    st.error(f"❌ Training error: {str(e)}")
-
-    # Display ML results
-    if st.session_state.ml_results:
-        results = st.session_state.ml_results
-        metrics = results["metrics"]
-
-        st.divider()
-        st.markdown("### 📈 Model Performance")
-
-        # Metrics cards
-        metric_keys = [k for k in metrics.keys() if not k.endswith("_fig") and k != "Report"]
-        if metric_keys:
-            metric_cols = st.columns(len(metric_keys))
-            for i, key in enumerate(metric_keys):
-                metric_cols[i].metric(key, metrics[key])
-
-        # Classification report
-        if "Report" in metrics:
-            with st.expander("📋 Detailed Classification Report"):
-                report_df = pd.DataFrame(metrics["Report"]).T.round(3)
-                st.dataframe(report_df, use_container_width=True)
-
-        # Charts
-        chart_keys = [k for k in metrics.keys() if k.endswith("_fig")]
-        for key in chart_keys:
-            st.plotly_chart(metrics[key], use_container_width=True)
