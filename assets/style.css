@@ -13,9 +13,17 @@
 }
 
 /* Hide default Streamlit header/footer */
-#MainMenu {visibility: hidden;}
-header {visibility: hidden;}
-footer {visibility: hidden;}
+#MainMenu {
+    visibility: hidden;
+}
+
+header {
+    visibility: hidden;
+}
+
+footer {
+    visibility: hidden;
+}
 
 /* ---- Sidebar ---- */
 [data-testid="stSidebar"] {
@@ -47,7 +55,7 @@ footer {visibility: hidden;}
 }
 
 /* ---- Buttons ---- */
-.stButton > button {
+.stButton>button {
     background: linear-gradient(135deg, #6C63FF 0%, #5A54D4 100%);
     color: white;
     border: none;
@@ -59,7 +67,7 @@ footer {visibility: hidden;}
     box-shadow: 0 4px 15px rgba(108, 99, 255, 0.25);
 }
 
-.stButton > button:hover {
+.stButton>button:hover {
     transform: translateY(-2px);
     box-shadow: 0 6px 25px rgba(108, 99, 255, 0.4);
     background: linear-gradient(135deg, #7B73FF 0%, #6C63FF 100%);
@@ -149,7 +157,7 @@ footer {visibility: hidden;}
 }
 
 /* ---- Select boxes ---- */
-[data-testid="stSelectbox"] > div > div {
+[data-testid="stSelectbox"]>div>div {
     background: rgba(22, 27, 34, 0.8);
     border-color: rgba(108, 99, 255, 0.2);
     border-radius: 10px;
@@ -175,6 +183,7 @@ footer {visibility: hidden;}
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -182,8 +191,15 @@ footer {visibility: hidden;}
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.5; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
 }
 
 .processing-indicator {
@@ -197,13 +213,16 @@ footer {visibility: hidden;}
     width: 8px;
     height: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: #0d1117;
 }
+
 ::-webkit-scrollbar-thumb {
     background: rgba(108, 99, 255, 0.3);
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: rgba(108, 99, 255, 0.5);
 }

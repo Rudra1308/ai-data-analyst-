@@ -1,141 +1,128 @@
-# 🧠 AI Data Analyst
+# 🧠 Enterprise AI Data Analyst Platform
 
-**Upload your data. Ask questions. Get insights instantly.**
-
-AI Data Analyst is a web-based application that allows users to upload structured datasets (CSV format) and interact with them using natural language. The system leverages LLMs and Machine Learning models to generate insights, visualizations, and predictions.
-
-![Python](https://img.shields.io/badge/Python-3.9+-blue?logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-1.30+-ff4b4b?logo=streamlit)
-![License](https://img.shields.io/badge/License-MIT-green)
-
----
-
-## 🎯 Problem & Solution
-
-**Problem:** Non-technical users struggle to analyze datasets quickly, write queries, and extract insights.
-
-**Solution:** Upload CSV files, ask questions in plain English, and receive insights, visualizations, and predictions — no coding required.
-
----
-
-## ✨ Features
-
-| Feature | Description |
-|---------|-------------|
-| 📤 **CSV Upload** | Drag & drop CSV files with auto-parsing |
-| 💬 **Natural Language Chat** | Ask questions about your data in plain English |
-| 📊 **Auto Visualizations** | Interactive Plotly charts generated from queries |
-| 🧠 **AI Insights** | Powered by any LLM via OpenRouter |
-| 🔄 **Context Awareness** | Follow-up questions remember prior conversation |
-| 📊 **Auto EDA** | Automatic exploratory data analysis charts |
-| 🎨 **Premium Dark UI** | Glassmorphism design with smooth animations |
+**Enterprise-grade AI-powered data analytics platform. Upload files, auto-clean, run statistical models, forecast trends, train machine learning predictors, and chat using a true multi-agent system.**
 
 ---
 
 ## 🏗️ Architecture
 
 ```
-User → Streamlit UI → Backend API
-                  ↓
-            Data Loader (Pandas) → DataFrame
-                  ↓
-            User Query → LLM Engine (OpenRouter)
-                  ↓
-            Generated Code → Execution Engine
-                  ↓
-         Results → Visualization (Plotly)
-                  ↓
-            Charts → Streamlit UI
+                       +----------------------------------+
+                       |       Next.js 15 Frontend        |
+                       | (React 19, TypeScript, Recharts) |
+                       +----------------+-----------------+
+                                        | HTTPS / SSE
+                                        v
+                       +----------------+-----------------+
+                       |        FastAPI Backend           |
+                       |       (Python & SQLAlchemy)      |
+                       +-------+--------+--------+--------+
+                               |        |        |
+             +-----------------+        |        +-----------------+
+             | DuckDB Engine            | Celery Task              | Redis cache
+             v                          v                          v
++------------+------------+   +---------+---------+   +------------+------------+
+|  Local SQLite Fallback  |   |   Celery Workers  |   |      Redis Broker       |
+|      Metadata Storage   |   |   (Polars Core)   |   |      & Task Queue       |
++-------------------------+   +---------+---------+   +-------------------------+
+                                        |
+                                        v
+                              +---------+---------+
+                              | Multi-Agent System|
+                              | (Planner, Cleaner |
+                              | EDA, ML, Stats,   |
+                              | Insight, Visual)  |
+                              +-------------------+
 ```
 
 ---
 
-## 🛠️ Tech Stack
+## ✨ Features
 
-- **Frontend:** Streamlit
-- **Backend:** Python, Pandas, NumPy
-- **AI:** OpenRouter (any LLM)
-- **Visualization:** Plotly
-- **Styling:** Custom CSS with glassmorphism
-
----
-
-## 🚀 Installation
-
-### Prerequisites
-- Python 3.9+
-- An OpenRouter API key ([Get one free](https://openrouter.ai/keys))
-
-### Setup
-
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/ai-data-analyst.git
-cd ai-data-analyst
-
-# Create virtual environment
-python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-
-# Set up environment variables
-cp .env.example .env
-# Edit .env and add your OpenRouter API key
-
-# Run the app
-streamlit run app.py
-```
+- **True Multi-Agent Orchestration**: A `PlannerAgent` coordinates specialized worker agents (`cleaner`, `eda`, `stats`, `ml`, `forecaster`, `visualizer`, `insight`) via schema-enforced structured JSON.
+- **Fast Data Diagnostics**: Powered by **Polars** (lazy evaluations) and **DuckDB** local queries for lightning-fast metrics calculation.
+- **Auto Data Cleaning**: Detects null parameters, indexes duplicate records, flags statistical outliers using Interquartile Range boundaries, and suggests database column name refactoring.
+- **Hypothesis Testing & Forecasts**: Runs standard Chi-Square tests, t-tests, ANOVA, and time series projection models on dates aggregates.
+- **Secure Sandboxed Interpreter**: Local Python sandbox executing generated scripts using whitelisted functions, modules, and built-ins.
+- **Premium Dark Minimalist UI**: Sleek workspace featuring workspace switchers, datasets preview tables, chat threads, and custom settings panel.
 
 ---
 
-## 📖 Usage
+## 📂 Monorepo Structure
 
-1. **Upload** a CSV file via the sidebar
-2. **Configure** your API key and select a model
-3. **Chat** — ask questions like:
-   - "Show me a summary of the data"
-   - "Create a bar chart of revenue by product"
-   - "What's the correlation between price and rating?"
-4. **Explore** — browse auto-generated EDA charts
-
----
-
-## 📂 Project Structure
-
-```
+```text
 ai-data-analyst/
-├── app.py                  # Main Streamlit application
-├── requirements.txt        # Python dependencies
-├── README.md               # This file
-├── .env.example            # Environment variables template
-├── data/
-│   └── sample_sales.csv    # Demo dataset
-├── src/
-│   ├── __init__.py
-│   ├── data_loader.py      # CSV parsing & DataFrame management
-│   ├── llm_engine.py       # OpenRouter LLM integration
-│   ├── execution_engine.py # Safe code execution sandbox
-│   ├── visualization.py    # Plotly chart generation
-│   └── utils.py            # Shared utilities
-└── assets/
-    └── style.css           # Custom dark theme CSS
+├── backend/                  # FastAPI Application
+│   ├── app/
+│   │   ├── api/              # CRUD endpoints (auth, projects, datasets, chats, dashboards)
+│   │   ├── core/             # config, database, security, celery_app
+│   │   ├── models/           # SQLAlchemy Database models (User, Project, Dataset, Chat, Dashboard)
+│   │   ├── schemas/          # Pydantic serialization models
+│   │   ├── services/         # file_service, execution_service (sandbox)
+│   │   └── agents/           # Multi-agent implementations
+│   └── tests/                # Pytest unit coverage
+├── frontend/                 # Next.js 15 + React 19 Frontend
+│   ├── app/                  # Route layouts and global stylesheets
+│   └── components/           # Dashboard, ChatInterface, DataExplorer, VisualizationStudio, SettingsPanel
+├── docker/                   # Orchestrations
+│   └── docker-compose.yml
+└── README.md
 ```
 
 ---
 
-## 🔮 Future Enhancements
+## 🚀 Getting Started
 
-- [ ] Excel/SQL support
-- [ ] Multi-agent system
-- [ ] Interactive dashboards
-- [ ] Voice queries
-- [ ] Cloud deployment
-- [ ] Export reports as PDF
+### Local Setup (Manual)
+
+#### 1. Backend
+
+1. Navigate to the backend folder:
+   ```bash
+   cd backend
+   ```
+2. Create and activate a virtual environment:
+   ```bash
+   python -m venv venv
+   source venv/bin/activate # On Windows: venv\Scripts\activate
+   ```
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Configure environment variables in `.env` (copy from `.env.example` in root or backend):
+   ```ini
+   OPENROUTER_API_KEY=your-api-key
+   DEFAULT_MODEL=google/gemini-2.0-flash-exp:free
+   ```
+5. Run the FastAPI development server:
+   ```bash
+   uvicorn app.main:app --reload --port 8000
+   ```
+
+#### 2. Frontend
+
+1. Navigate to the frontend folder:
+   ```bash
+   cd ../frontend
+   ```
+2. Install npm packages:
+   ```bash
+   npm install
+   ```
+3. Run the Next.js development server:
+   ```bash
+   npm run dev
+   ```
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
-## 📄 License
+## 🐳 Docker Deployment
 
-This project is licensed under the MIT License.
+1. Run the entire container stack (Redis, FastAPI Backend, Next.js Frontend, Celery worker) from the `docker` directory:
+   ```bash
+   cd docker
+   docker-compose up --build
+   ```
+2. The frontend is accessible on `http://localhost:3000` and the backend documentation is on `http://localhost:8000/docs`.
